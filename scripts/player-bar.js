@@ -38,6 +38,11 @@
     player.skipTo(event.target.value);
   })
 
+  //Change volume
+  $('#volume-control input').on('input', function(event) {
+    player.setVolume(event.target.value);
+  })
+
   //Song Timer
   setInterval( () => {
     if (player.playState !== 'playing') { return; }
@@ -47,5 +52,6 @@
     const percent = (currentTime / duration) * 100;
     $('#time-control .current-time').text(currentTime);
     $('#time-control input').val(percent);
+    $('#time-control .total-time').text(duration);
   }, 1000);
 }
